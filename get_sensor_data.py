@@ -4,7 +4,13 @@ import math
 import IMU
 import datetime
 import os
- 
+
+IMU.detectIMU()     #Detect if BerryIMU is connected.
+if(IMU.BerryIMUversion == 99):
+    print(" No BerryIMU found... exiting ")
+    sys.exit()
+IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
+
   
 while True:
     ACCx = IMU.readACCx()
