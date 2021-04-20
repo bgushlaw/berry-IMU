@@ -17,7 +17,7 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 fig = plt.figure()
 ax = fig.add_subplot(111)
 i=0
-x_val,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
+x_vals,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
 
 
 while True:
@@ -33,7 +33,7 @@ while True:
     
     print('ACCx:',ACCx)
     
-    x_val.append(i)
+    x_vals.append(i)
     ACCx_vals.append(ACCx)
     ACCy_vals.append(ACCy)
     ACCz_vals.append(ACCz)
