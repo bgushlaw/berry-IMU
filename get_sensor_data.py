@@ -15,7 +15,8 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 while True:
     startInt = mymillis();  
     
-    while(mymillis() - startInt < 20):
+    while mymillis() - startInt < 20:
+        ()
     
         
     
