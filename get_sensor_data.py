@@ -13,9 +13,9 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
   
 while True:
-    startInt = mymillis();  
+    startInt = time.thread_time();  
     
-    while mymillis() - startInt < 20:
+    while time.thread_time() - startInt < 20:
         ()
     
         
