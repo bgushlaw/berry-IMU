@@ -13,10 +13,19 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
   
 while True:
+    startInt = mymillis();  
+    
+    while(mymillis() - startInt < 20)
+    {
+        
+    }
+    
     ACCx = IMU.readACCx()
     ACCy = IMU.readACCy()
     ACCz = IMU.readACCz()
     GYRx = IMU.readGYRx()
     GYRy = IMU.readGYRy()
     GYRz = IMU.readGYRz()
+    
+    
     print('ACCx:',ACCx,'ACCy',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
