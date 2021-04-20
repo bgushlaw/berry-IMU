@@ -13,3 +13,4 @@ while True:
     GYRx = IMU.readGYRx()
     GYRy = IMU.readGYRy()
     GYRz = IMU.readGYRz()
+    print('ACCx:',ACCx,'ACCy',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
