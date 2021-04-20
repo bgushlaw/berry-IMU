@@ -4,6 +4,8 @@ import math
 import IMU
 import datetime
 import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 IMU.detectIMU()     #Detect if BerryIMU is connected.
