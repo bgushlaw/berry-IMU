@@ -4,6 +4,7 @@ import math
 import IMU
 import datetime
 import os
+import matplotlib.pyplot as plt
 
 IMU.detectIMU()     #Detect if BerryIMU is connected.
 if(IMU.BerryIMUversion == 99):
@@ -11,16 +12,18 @@ if(IMU.BerryIMUversion == 99):
     sys.exit()
 IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
-  
+
+    
+fig = plt.figure()
+ax = fig.add_subplot(111)
+i=0
+x_val,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
+fig.show()
+
 while True:
-    startInt = time.thread_time();  
+  
     
-    while time.thread_time() - startInt < 20:
-        ()
-    
-        
-    
-    
+       
     ACCx = IMU.readACCx()
     ACCy = IMU.readACCy()
     ACCz = IMU.readACCz()
@@ -28,5 +31,18 @@ while True:
     GYRy = IMU.readGYRy()
     GYRz = IMU.readGYRz()
     
+    x_val.append(i)
+    ACCx_vals.append(ACCx)
+    ACCy_vals.append(ACCy)
+    ACCz_vals.append(ACCz)
     
-    print('ACCx:',ACCx,'ACCy',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
+    
+    ax.plot(x_vals,ACCx_vals,color='b')
+    ax.plot(x_vals,ACCy_vals,color='r')
+    ax.plot(x_vals,ACCz_vals,color='g')
+    ax.set_xlim(left=max(0, i-50), right=i+50)
+    fig.canvas.draw()
+    time.sleep(.02)
+    i += 1
+   
+   
