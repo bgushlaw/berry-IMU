@@ -26,14 +26,14 @@ while True:
   
     
        
-    ACCx = IMU.readACCx()
-    ACCy = IMU.readACCy()
-    ACCz = IMU.readACCz()
-    GYRx = IMU.readGYRx()
-    GYRy = IMU.readGYRy()
-    GYRz = IMU.readGYRz()
+    ACCx = IMU.readACCx()*0.061/1000
+    ACCy = IMU.readACCy()*0.061/1000
+    ACCz = IMU.readACCz()*0.061/1000
+    GYRx = IMU.readGYRx()*0.07
+    GYRy = IMU.readGYRy()*0.07
+    GYRz = IMU.readGYRz()*0.07
     
-    print('ACCx:',ACCx)
+    print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
     
     x_vals.append(i)
     ACCx_vals.append(ACCx)
