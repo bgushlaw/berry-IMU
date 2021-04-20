@@ -18,7 +18,7 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 i=0
 x_val,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
-fig.show()
+
 
 while True:
   
@@ -30,6 +30,8 @@ while True:
     GYRx = IMU.readGYRx()
     GYRy = IMU.readGYRy()
     GYRz = IMU.readGYRz()
+    
+    print('ACCx:',ACCx)
     
     x_val.append(i)
     ACCx_vals.append(ACCx)
