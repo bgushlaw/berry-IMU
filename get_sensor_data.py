@@ -42,6 +42,7 @@ while True:
     ax.plot(x_vals,ACCz_vals,color='g')
     ax.set_xlim(left=max(0, i-50), right=i+50)
     fig.canvas.draw()
+    fig.show()
     time.sleep(.02)
     i += 1
    
