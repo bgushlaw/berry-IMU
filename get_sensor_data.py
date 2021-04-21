@@ -5,10 +5,10 @@ import IMU
 import datetime
 import os
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 import numpy as np
 
-plt.style.use('ggplot') # matplotlib visual style setting
-
+plt.style.use('fivethirtyeight')
 
 IMU.detectIMU()     #Detect if BerryIMU is connected.
 if(IMU.BerryIMUversion == 99):
@@ -24,12 +24,24 @@ i=0
 
 time.sleep(1) # wait for mpu9250 sensor to settle
 
-ii = 1000 # number of points
-t1 = time.time() # for calculating sample rate
+
 # prepping for visualization
 berry_imu_str = ['accel-x','accel-y','accel-z','gyro-x','gyro-y','gyro-z']
 
 x_vals,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
+
+def animate(i,x_vals,ACCx_vals,ACCy_vals,ACCz_vals):
+
+    plt.cla()
+
+    plt.plot(x_vals, ACCx_vals, label='Channel 1')
+    plt.plot(x_vals, ACCy_vals, label='Channel 2')
+    plt.plot(x_vals, ACCz_vals, label='Channel 3')
+    
+   
+    
+    plt.legend(loc='upper left')
+    plt.tight_layout()
 
 
 while True:
@@ -52,12 +64,10 @@ while True:
     ACCz_vals.append(ACCz)
     
     
-    plt.plot(x_vals,ACCx_vals,color='b')
-    plt.plot(x_vals,ACCy_vals,color='r')
-    plt.plot(x_vals,ACCz_vals,color='g')
-    plt.xlim(left=max(0, i-50), right=i+50)
+
+    ani = FuncAnimation(plt.gcf(), animate(i,x_vals,ACCx_vals,ACCy_vals,ACCz_vals), interval=1000)
+    i += 1
+    plt.tight_layout()
     plt.show()
     time.sleep(.02)
-    i += 1
-   
    
