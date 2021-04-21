@@ -13,19 +13,23 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
 # Parameters
 x_len = 200         # Number of points to display
-y_range = [0, 10]  # Range of possible Y values to display
+y_range = [-2, 2]  # Range of possible Y values to display
 x_vals,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
 
 # Create figure for plotting
 fig = plt.figure()
 ax = fig.add_subplot(1, 1, 1)
 xs = list(range(0, 200))
-ys = [0] * x_len
+ys1 = [0] * x_len
+ys2 = [0] * x_len
+ys3 = [0] * x_len
 ax.set_ylim(y_range)
 
 
 # Create a blank line. We will update the line in animate
-line, = ax.plot(xs, ys)
+line, = ax.plot(xs, ys1)
+line, = ax.plot(xs, ys2)
+line, = ax.plot(xs, ys3)
 
 # Add labels
 plt.title('Sensor Data')
@@ -33,7 +37,7 @@ plt.xlabel('Samples')
 plt.ylabel('amplitudes')
 
 # This function is called periodically from FuncAnimation
-def animate(i, ys):
+def animate(i, ys1,ys2,ys3):
 
     # Read temperature (Celsius) from TMP102
            
@@ -53,20 +57,25 @@ def animate(i, ys):
     ACCz_vals.append(ACCz)
     
     # Add y to list
-    ys.append(ACCx)
-
+    ys1.append(ACCx)
+    ys2.append(ACCy)
+    ys3.append(ACCz)
+    
     # Limit y list to set number of items
-    ys = ys[-x_len:]
-
+    ys1 = ys1[-x_len:]
+    ys2 = ys2[-x_len:]
+    ys3 = ys3[-x_len:]
+    
     # Update line with new Y values
-    line.set_ydata(ys)
-
+    line.set_ydata(ys1)
+    line.set_ydata(ys2)
+    line.set_ydata(ys3)
     return line,
 
 # Set up plot to call animate() function periodically
 ani = animation.FuncAnimation(fig,
     animate,
-    fargs=(ys,),
+    fargs=(ys1,ys2,ys3,),
     interval=50,
     blit=True)
 plt.show()
