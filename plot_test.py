@@ -1,10 +1,20 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import imu
+import IMU
+
+
+IMU.detectIMU()     #Detect if BerryIMU is connected.
+if(IMU.BerryIMUversion == 99):
+    print(" No BerryIMU found... exiting ")
+    sys.exit()
+IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
+
+
 
 # Parameters
 x_len = 200         # Number of points to display
 y_range = [0, 10]  # Range of possible Y values to display
+x_vals,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
 
 # Create figure for plotting
 fig = plt.figure()
@@ -20,7 +30,7 @@ tmp102.init()
 line, = ax.plot(xs, ys)
 
 # Add labels
-plt.title('TMP102 Temperature over Time')
+plt.title('Sensor Data')
 plt.xlabel('Samples')
 plt.ylabel('amplitudes')
 
@@ -28,10 +38,24 @@ plt.ylabel('amplitudes')
 def animate(i, ys):
 
     # Read temperature (Celsius) from TMP102
-    temp_c = round(tmp102.read_temp(), 2)
-
+           
+    ACCx = IMU.readACCx()*0.061/1000
+    ACCy = IMU.readACCy()*0.061/1000
+    ACCz = IMU.readACCz()*0.061/1000
+    GYRx = IMU.readGYRx()*0.07
+    GYRy = IMU.readGYRy()*0.07
+    GYRz = IMU.readGYRz()*0.07
+  
+    
+    print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
+    
+   
+    ACCx_vals.append(ACCx)
+    ACCy_vals.append(ACCy)
+    ACCz_vals.append(ACCz)
+    
     # Add y to list
-    ys.append(temp_c)
+    ys.append(ACCx_vals)
 
     # Limit y list to set number of items
     ys = ys[-x_len:]
