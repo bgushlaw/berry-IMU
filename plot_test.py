@@ -49,7 +49,7 @@ def animate(i, ys1,ys2,ys3):
     GYRz = IMU.readGYRz()*0.07
   
     
-    print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
+    #print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
     
    
     ACCx_vals.append(ACCx)
