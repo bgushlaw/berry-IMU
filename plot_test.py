@@ -23,8 +23,6 @@ xs = list(range(0, 200))
 ys = [0] * x_len
 ax.set_ylim(y_range)
 
-# Initialize communication with TMP102
-tmp102.init()
 
 # Create a blank line. We will update the line in animate
 line, = ax.plot(xs, ys)
@@ -55,7 +53,7 @@ def animate(i, ys):
     ACCz_vals.append(ACCz)
     
     # Add y to list
-    ys.append(ACCx_vals)
+    ys.append(ACCx)
 
     # Limit y list to set number of items
     ys = ys[-x_len:]
