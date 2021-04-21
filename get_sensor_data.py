@@ -44,7 +44,7 @@ while True:
     GYRx = IMU.readGYRx()*0.07
     GYRy = IMU.readGYRy()*0.07
     GYRz = IMU.readGYRz()*0.07
-    t_vec.append(time.time())
+  
     
     print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
     
