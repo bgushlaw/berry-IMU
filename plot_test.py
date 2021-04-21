@@ -1,8 +1,22 @@
+import random
+from itertools import count
+import pandas as pd
 import matplotlib.pyplot as plt
 
+plt.style.use('fivethirtyeight')
 
-xs = [0, 1, 2, 3, 4, 5, 6, 7]
-ys = [1, 0.3, -2.3, 5.1, 7.6, -0.2, -1.8, 4]
+x_vals = [0, 1, 2, 3, 4, 5]
+y_vals = [0, 1, 3, 2, 3, 5]
 
-plt.plot(xs, ys)
+plt.plot(x_vals, y_vals)
+
+
+# index = count()
+
+# def animate(i):
+#     x_vals.append(next(index))
+#     y_vals.append(random.randint(0, 5))
+
+
+plt.tight_layout()
 plt.show()
