@@ -27,9 +27,9 @@ ax.set_ylim(y_range)
 
 
 # Create a blank line. We will update the line in animate
-line, = ax.plot(xs, ys1)
-line, = ax.plot(xs, ys2)
-line, = ax.plot(xs, ys3)
+line1, = ax.plot(xs, ys1)
+line2, = ax.plot(xs, ys2)
+line3, = ax.plot(xs, ys3)
 
 # Add labels
 plt.title('Sensor Data')
@@ -67,10 +67,10 @@ def animate(i, ys1,ys2,ys3):
     ys3 = ys3[-x_len:]
     
     # Update line with new Y values
-    line.set_ydata(ys1)
-    line.set_ydata(ys2)
-    line.set_ydata(ys3)
-    return line,
+    line1.set_ydata(ys1)
+    line2.set_ydata(ys2)
+    line3.set_ydata(ys3)
+    return line1,line2,line3,
 
 # Set up plot to call animate() function periodically
 ani = animation.FuncAnimation(fig,
