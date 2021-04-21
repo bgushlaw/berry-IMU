@@ -57,7 +57,7 @@ while True:
     plt.plot(x_vals,ACCx_vals,color='b')
     plt.plot(x_vals,ACCy_vals,color='r')
     plt.plot(x_vals,ACCz_vals,color='g')
-    plt.set_xlim(left=max(0, i-50), right=i+50)
+    plt.xlim(left=max(0, i-50), right=i+50)
     plt.show()
     time.sleep(.02)
     i += 1
