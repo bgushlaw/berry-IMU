@@ -1,22 +1,50 @@
-import random
-from itertools import count
-import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import imu
 
-plt.style.use('fivethirtyeight')
+# Parameters
+x_len = 200         # Number of points to display
+y_range = [0, 10]  # Range of possible Y values to display
 
-x_vals = [0, 1, 2, 3, 4, 5]
-y_vals = [0, 1, 3, 2, 3, 5]
+# Create figure for plotting
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+xs = list(range(0, 200))
+ys = [0] * x_len
+ax.set_ylim(y_range)
 
-plt.plot(x_vals, y_vals)
+# Initialize communication with TMP102
+tmp102.init()
 
+# Create a blank line. We will update the line in animate
+line, = ax.plot(xs, ys)
 
-# index = count()
+# Add labels
+plt.title('TMP102 Temperature over Time')
+plt.xlabel('Samples')
+plt.ylabel('amplitudes')
 
-# def animate(i):
-#     x_vals.append(next(index))
-#     y_vals.append(random.randint(0, 5))
+# This function is called periodically from FuncAnimation
+def animate(i, ys):
 
+    # Read temperature (Celsius) from TMP102
+    temp_c = round(tmp102.read_temp(), 2)
 
-plt.tight_layout()
+    # Add y to list
+    ys.append(temp_c)
+
+    # Limit y list to set number of items
+    ys = ys[-x_len:]
+
+    # Update line with new Y values
+    line.set_ydata(ys)
+
+    return line,
+
+# Set up plot to call animate() function periodically
+ani = animation.FuncAnimation(fig,
+    animate,
+    fargs=(ys,),
+    interval=50,
+    blit=True)
 plt.show()
