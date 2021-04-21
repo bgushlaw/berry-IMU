@@ -41,9 +41,9 @@ def animate(i, ys1,ys2,ys3):
 
     # Read temperature (Celsius) from TMP102
            
-    ACCx = IMU.readACCx()*0.061/1000
-    ACCy = IMU.readACCy()*0.061/1000
-    ACCz = IMU.readACCz()*0.061/1000
+    ACCx = IMU.readACCx()*2*0.061/1000
+    ACCy = IMU.readACCy()*2*0.061/1000
+    ACCz = IMU.readACCz()*2*0.061/1000
     GYRx = IMU.readGYRx()*0.07
     GYRy = IMU.readGYRy()*0.07
     GYRz = IMU.readGYRz()*0.07
