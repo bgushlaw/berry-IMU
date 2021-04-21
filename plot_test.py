@@ -70,12 +70,16 @@ def animate(i, ys1,ys2,ys3):
     line1.set_ydata(ys1)
     line2.set_ydata(ys2)
     line3.set_ydata(ys3)
+    line1.set_label('ACCx')
+    line2.set_label('ACCy')
+    line3.set_label('ACCz')
+    ax.legend()
     return line1,line2,line3,
 
 # Set up plot to call animate() function periodically
 ani = animation.FuncAnimation(fig,
     animate,
     fargs=(ys1,ys2,ys3,),
-    interval=50,
+    interval=20,
     blit=True)
 plt.show()
