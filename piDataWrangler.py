@@ -12,6 +12,11 @@ import scipy.signal as scisig
 import scipy.stats
 import time
 
+Old_Feature_list = ['acc-X', 'acc-Y', 'acc-Z','gyro-X', 'gyro-Y', 'gyro-Z']
+New_Feature_list = ['Bacc-X', 'Bacc-Y', 'Bacc-Z', 'Gacc-X', 'Gacc-Y', 'Gacc-Z', 'gyro-X', 'gyro-Y', 'gyro-Z']
+Final_Feature_list = ['tBodyAcc-mean-X','tBodyAcc-mean-Y','tBodyAcc-mean-Z','tBodyAcc-std-X', 'tBodyAcc-std-Y', 'tBodyAcc-std-Z','tBodyAcc-max-X','tBodyAcc-max-Y','tBodyAcc-max-Z','tBodyAcc-min-X','tBodyAcc-min-Y','tBodyAcc-min-Z','tGravityAcc-mean-X','tGravityAcc-mean-Y','tGravityAcc-mean-Z','tGravityAcc-std-X','tGravityAcc-std-Y','tGravityAcc-std-Z','tGravityAcc-max-X','tGravityAcc-max-Y','tGravityAcc-max-Z','tGravityAcc-min-X','tGravityAcc-min-Y','tGravityAcc-min-Z','tBodyGyro-mean-X','tBodyGyro-mean-Y','tBodyGyro-mean-Z','tBodyGyro-std-X','tBodyGyro-std-Y','tBodyGyro-std-Z','tBodyGyro-max-X','tBodyGyro-max-Y','tBodyGyro-max-Z','tBodyGyro-min-X','tBodyGyro-min-Y','tBodyGyro-min-Z']
+
+
 def butter_lowpass(cutoff, fs, order=3):
     # Filtering Helper functions
     nyq = 0.5 * fs
@@ -50,7 +55,7 @@ def get_window_stats(data, label=-1):
                 'label': label}
     return features
   
- def filter_Acc(df):
+def filter_Acc(df):
     global Old_Feature_list
     global New_Feature_list
     
@@ -60,7 +65,7 @@ def get_window_stats(data, label=-1):
         df=df.drop([Old_Feature_list[x]], axis=1)
     return df
   
-  def window_feature_extraction(df):
+def window_feature_extraction(df):
     lower=-1
     upper=1
 
@@ -94,14 +99,14 @@ def get_window_stats(data, label=-1):
     wdf=wdf.reset_index(drop=True)
     return wdf
   
-  def normalize_data(df,lower,upper):
+def normalize_data(df,lower,upper):
     scaler = preprocessing.MinMaxScaler(feature_range=(lower, upper))
     names = df.columns
     d = scaler.fit_transform(df)
     scaled_df = pd.DataFrame(d, columns=names)
     return scaled_df
   
-  def Create_Features(df,file_name,Old_Feature_list,New_Feature_list,Final_Feature_list):
+def Create_Features(df,file_name):
     df=filter_Acc(df)
     wf=window_feature_extraction(df)
     wf.to_csv(file_name+'.csv', mode='a', header=False)
