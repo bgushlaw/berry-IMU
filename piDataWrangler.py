@@ -101,7 +101,6 @@ def get_window_stats(data, label=-1):
     scaled_df = pd.DataFrame(d, columns=names)
     return scaled_df
   
-  
   def Create_Features(df,file_name,Old_Feature_list,New_Feature_list,Final_Feature_list):
     df=filter_Acc(df)
     wf=window_feature_extraction(df)
