@@ -38,6 +38,7 @@ file_name=new_Path+'TestingIt'
 save_data=pd.DataFrame(columns=Final_Feature_list)
 save_data.to_csv(file_name+'.csv',index=True)
 df=save_data
+print(df)
 
 while True:
   
@@ -53,7 +54,7 @@ while True:
         df=df.append(df)
         time.sleep(.02)
         
-   wf=piDataWrangler.Create_Features(df,file_name,Old_Feature_list,New_Feature_list,Final_Feature_list)
+   wf=piDataWrangler.Create_Features(df,file_name)
    print(wf)
     
     #print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
