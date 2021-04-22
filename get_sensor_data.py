@@ -42,7 +42,7 @@ df=save_data
 while True:
   
     
-    for x in range(0,window_size)   
+    for x in range(0,window_size):   
         ACCx = IMU.readACCx()*2*0.061/1000
         ACCy = IMU.readACCy()*2*0.061/1000
         ACCz = IMU.readACCz()*2*0.061/1000
