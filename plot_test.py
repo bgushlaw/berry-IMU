@@ -13,7 +13,7 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
 # Parameters
 x_len = 200         # Number of points to display
-y_range = [-20, 20]  # Range of possible Y values to display
+y_range = [-5, 5]  # Range of possible Y values to display
 x_vals,ACCx_vals,ACCy_vals,ACCz_vals=[],[],[],[]
 
 # Create figure for plotting
