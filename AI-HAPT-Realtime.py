@@ -1,4 +1,4 @@
-#import sys
+import sys
 import time
 import math
 import IMU
@@ -11,6 +11,8 @@ import pandas as pd
 #import os.path
 from os import path
 import piDataWrangler
+from fastai.tabular.all import *
+from fastai.vision.widgets import *
 
 
 
@@ -21,8 +23,17 @@ if(IMU.BerryIMUversion == 99):
     sys.exit()
 IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
+path=Path()
 
-    
+if path.ls(file_exts='.pkl'):
+    learn_inf = load_learner(path/'Wrangled_no_ID.pkl')
+    id_to_name = {1:'walking', 2: 'walking_upstairs', 3: 'walking_downstairs', 4:'sitting', 5:'standing', 6:'laying',7:'stand_to_sit', 8:'sit_to_stand', 9:'sit_to_lie', 10:'lie_to_sit', 11:'stand_to_lie', 12:'lie_to_stand'} 
+else:    
+    print('No .PKL file found in path directory ' + path)
+    print('Aborting execution")
+    sys.exit()
+          
+          
 window_size=128
 
 
