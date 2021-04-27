@@ -52,11 +52,15 @@ while True:
         GYRy = IMU.readGYRy()*0.07
         GYRz = IMU.readGYRz()*0.07
         
-        new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
+        #new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
+        new_row = [ACCx,ACCy,ACCz,GYRx, GYRy,GYRz]
+        df.loc[x]=new_row
         #df=df.append(new_row,ignore_index=True)
         #time.sleep(.002)
-        toc=time.time()
+       
         
+    df=df.append(df)
+    toc=time.time()
     tic2=time.time()
     #wf=piDataWrangler.Create_Features(df,file_name)
     toc2=time.time()
