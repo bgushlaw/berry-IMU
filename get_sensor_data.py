@@ -37,8 +37,8 @@ new_Path='PiData/'
 file_name=new_Path+'TestingIt'
 save_data=pd.DataFrame(columns=Final_Feature_list)
 save_data.to_csv(file_name+'.csv',index=True)
-df = pd.DataFrame(0, index=np.arange(128), columns=Old_Feature_list)
-
+#df = pd.DataFrame(0, index=np.arange(128), columns=Old_Feature_list)
+a = numpy.zeros(shape=(window_size,6))
 
 while True:
     tic=time.time()
@@ -53,8 +53,9 @@ while True:
         GYRz = IMU.readGYRz()*0.07
         
         #new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
-        new_row = [ACCx,ACCy,ACCz,GYRx, GYRy,GYRz]
-        df.loc[x]=new_row
+     
+        a[x]=[ACCx,ACCy,ACCz,GYRx, GYRy,GYRz]
+        #df.loc[x]=new_row
         #df=df.append(new_row,ignore_index=True)
         #time.sleep(.002)
        
