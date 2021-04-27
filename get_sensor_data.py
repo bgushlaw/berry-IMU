@@ -41,16 +41,16 @@ save_data.to_csv(file_name+'.csv',index=True)
 a = np.zeros(shape=(window_size,6))
 
 while True:
-    tic=time.time()
-    tic3=time.time()
+    tic=time.clock()
+    tic3=time.clock()
     
     #df=pd.DataFrame(columns=Old_Feature_list)
    
     for x in range(0,window_size):
-        toc3=time.time()
+        toc3=time.clock()
         while toc3-tic3<.02:
-            toc3=time.time()
-        tic3=time.time()    
+            toc3=time.clock()
+        tic3=time.clock()    
         ACCx = IMU.readACCx()*2*0.061/1000
         ACCy = IMU.readACCy()*2*0.061/1000
         ACCz = IMU.readACCz()*2*0.061/1000
@@ -64,10 +64,10 @@ while True:
        
         
     df=pd.DataFrame(a, columns = Old_Feature_list)
-    toc=time.time()
-    tic2=time.time()
+    toc=time.clock()
+    tic2=time.clock()
     wf=piDataWrangler.Create_Features(df,file_name)
-    toc2=time.time()
+    toc2=time.clock()
     print(f"Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
     print('Size of Window:',len(wf))
     print(wf)
