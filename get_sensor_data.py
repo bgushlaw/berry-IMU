@@ -60,7 +60,7 @@ while True:
         #time.sleep(.002)
        
         
-    df=pd.DataFrame(a, columns = Old_Features_list)
+    df=pd.DataFrame(a, columns = Old_Feature_list)
     toc=time.time()
     tic2=time.time()
     wf=piDataWrangler.Create_Features(df,file_name)
