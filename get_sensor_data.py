@@ -60,10 +60,10 @@ while True:
         #time.sleep(.002)
        
         
-    #df=df.append(df)
+    df=pd.DataFrame(a, columns = Old_Features_list)
     toc=time.time()
     tic2=time.time()
-    #wf=piDataWrangler.Create_Features(df,file_name)
+    wf=piDataWrangler.Create_Features(df,file_name)
     toc2=time.time()
     time.sleep(.100)
     print(f"Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
