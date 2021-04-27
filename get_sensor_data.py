@@ -54,7 +54,8 @@ while True:
         new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
         df=df.append(new_row,ignore_index=True)
         time.sleep(.02)
-        
+    
+    print(df)
     wf=piDataWrangler.Create_Features(df,file_name)
     print(wf)
     
