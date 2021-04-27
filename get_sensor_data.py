@@ -42,7 +42,7 @@ a = np.zeros(shape=(window_size,6))
 
 while True:
     tic=time.time()
-    ti3c=time.time()
+    tic3=time.time()
     
     #df=pd.DataFrame(columns=Old_Feature_list)
    
