@@ -52,7 +52,7 @@ while True:
         GYRz = IMU.readGYRz()*0.07
         
         new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
-        df=df.append(new_rows,ignore_index=True)
+        df=df.append(new_row,ignore_index=True)
         time.sleep(.02)
         
     wf=piDataWrangler.Create_Features(df,file_name)
