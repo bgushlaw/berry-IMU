@@ -37,8 +37,8 @@ new_Path='PiData/'
 file_name=new_Path+'TestingIt'
 save_data=pd.DataFrame(columns=Final_Feature_list)
 save_data.to_csv(file_name+'.csv',index=True)
-df=save_data
-print(df)
+df=pd.DataFrame(columns=Old_Feature_list)
+
 
 while True:
   
