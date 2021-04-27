@@ -78,13 +78,18 @@ while True:
     toc=time.perf_counter()
     tic2=time.perf_counter()
     wf=piDataWrangler.Create_Features(df,file_name)
+    row, clas, probs = learn_inf.predict(wf.iloc[0])
+    rowList = list(probs)
+    Confidence = max(rowList)
+    Guess_ID=rowList.index(Confidence)+1
+    
     toc2=time.perf_counter()
-    print(f"Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
-    print('Size of Window:',len(wf))
-    print(wf)
+    print('Physiological State:',id_to_name.pop(Guess_ID), f" Confidence: {Confidence*100:0.2f} %",  f" Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
     
     
-    #print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
+    
+    
+   
     
 
     
