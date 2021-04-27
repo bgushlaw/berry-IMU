@@ -59,7 +59,7 @@ while True:
         #time.sleep(.002)
        
         
-    df=df.append(df)
+    #df=df.append(df)
     toc=time.time()
     tic2=time.time()
     #wf=piDataWrangler.Create_Features(df,file_name)
