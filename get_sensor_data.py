@@ -42,21 +42,25 @@ a = np.zeros(shape=(window_size,6))
 
 while True:
     tic=time.time()
-    #df=pd.DataFrame(columns=Old_Feature_list)
+    ti3c=time.time()
     
-    for x in range(0,window_size):   
+    #df=pd.DataFrame(columns=Old_Feature_list)
+   
+    for x in range(0,window_size):
+        toc3=time.time()
+        while toc3-tic3<.02:
+            toc3=time.time()
+        tic3=time.time()    
         ACCx = IMU.readACCx()*2*0.061/1000
         ACCy = IMU.readACCy()*2*0.061/1000
         ACCz = IMU.readACCz()*2*0.061/1000
         GYRx = IMU.readGYRx()*0.07
         GYRy = IMU.readGYRy()*0.07
         GYRz = IMU.readGYRz()*0.07
-        
-        #new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
-     
+            
         a[x]=[ACCx,ACCy,ACCz,GYRx, GYRy,GYRz]
 
-        time.sleep(.02)
+      
        
         
     df=pd.DataFrame(a, columns = Old_Feature_list)
