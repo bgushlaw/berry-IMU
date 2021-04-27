@@ -54,12 +54,13 @@ while True:
         
         new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
         df=df.append(new_row,ignore_index=True)
-        time.sleep(.002)
+        #time.sleep(.002)
         toc=time.time()
         
     tic2=time.time()
     wf=piDataWrangler.Create_Features(df,file_name)
     toc2=time.time()
+    time.sleep(.100)
     print(f"Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
     
     
