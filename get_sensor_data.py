@@ -37,12 +37,12 @@ new_Path='PiData/'
 file_name=new_Path+'TestingIt'
 save_data=pd.DataFrame(columns=Final_Feature_list)
 save_data.to_csv(file_name+'.csv',index=True)
-
+df = pd.DataFrame(0, index=128, columns=Old_Feature_list)
 
 
 while True:
     tic=time.time()
-    df=pd.DataFrame(columns=Old_Feature_list)
+    #df=pd.DataFrame(columns=Old_Feature_list)
     
     for x in range(0,window_size):   
         ACCx = IMU.readACCx()*2*0.061/1000
