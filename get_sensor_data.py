@@ -41,7 +41,7 @@ save_data.to_csv(file_name+'.csv',index=True)
 
 
 while True:
-  
+    tic=time.time()
     df=pd.DataFrame(columns=Old_Feature_list)
     
     for x in range(0,window_size):   
@@ -56,9 +56,12 @@ while True:
         df=df.append(new_row,ignore_index=True)
         time.sleep(.02)
     
-    print(df)
+    
     wf=piDataWrangler.Create_Features(df,file_name)
-    print(wf)
+    toc=time.time()
+    print(f"Run time: {toc - tic:0.4f} seconds")
+    
+    
     
     #print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
     
