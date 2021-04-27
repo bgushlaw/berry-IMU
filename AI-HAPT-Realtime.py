@@ -13,7 +13,7 @@ import pandas as pd
 from os import path
 import piDataWrangler
 from fastai.tabular.all import *
-from fastai.vision.widgets import *
+
 
 
 
