@@ -55,9 +55,8 @@ while True:
         #new_row = {Old_Feature_list[0]:ACCx, Old_Feature_list[1]:ACCy, Old_Feature_list[2]:ACCz, Old_Feature_list[3]:GYRx, Old_Feature_list[4]:GYRy, Old_Feature_list[5]:GYRz}
      
         a[x]=[ACCx,ACCy,ACCz,GYRx, GYRy,GYRz]
-        #df.loc[x]=new_row
-        #df=df.append(new_row,ignore_index=True)
-        #time.sleep(.002)
+
+        time.sleep(.02)
        
         
     df=pd.DataFrame(a, columns = Old_Feature_list)
@@ -65,9 +64,9 @@ while True:
     tic2=time.time()
     wf=piDataWrangler.Create_Features(df,file_name)
     toc2=time.time()
-    time.sleep(.100)
     print(f"Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
-    
+    print('Size of Window:',len(wf))
+    print(wf)
     
     
     #print('ACCx:',ACCx,'ACCy:',ACCy,'ACCz:',ACCz,'GYRx:',GYRx,'GYRy:',GYRy,'GYRz:',GYRz)
