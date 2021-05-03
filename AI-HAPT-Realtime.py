@@ -85,6 +85,8 @@ while True:
     Guess_ID=rowList.index(Confidence)+1
     
     toc2=time.perf_counter()
+    print(Guess_ID)
+    print(id_to_name)
     print('Physiological State:',id_to_name.pop(Guess_ID), f" Confidence: {Confidence*100:0.2f} %",  f" Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
     
     
