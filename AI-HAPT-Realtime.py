@@ -81,7 +81,7 @@ while True:
     wf=piDataWrangler.Create_Features(df,file_name)
     toc2=time.perf_counter()
     tic3=time.perf_counter()
-    probs = learn_inf.predict(wf.iloc[0])
+    row, clas, probs = learn_inf.predict(wf.iloc[0])
     toc3=time.perf_counter()
     rowList = list(probs)
     Confidence = max(rowList)
