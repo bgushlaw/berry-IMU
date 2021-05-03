@@ -79,15 +79,18 @@ while True:
     toc=time.perf_counter()
     tic2=time.perf_counter()
     wf=piDataWrangler.Create_Features(df,file_name)
-    row, clas, probs = learn_inf.predict(wf.iloc[0])
+    toc2=time.perf_counter()
+    tic3=time.perf_counter()
+    probs = learn_inf.predict(wf.iloc[0])
+    toc3=time.perf_counter()
     rowList = list(probs)
     Confidence = max(rowList)
     Guess_ID=rowList.index(Confidence)
     
-    toc2=time.perf_counter()
-    print(Guess_ID)
-    print(id_to_name)
-    print('Physiological State:',list(id_to_name.values())[Guess_ID], f" Confidence: {Confidence*100:0.2f} %",  f" Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds" )
+    
+   
+ 
+    print('Physiological State:',list(id_to_name.values())[Guess_ID], f" Confidence: {Confidence*100:0.2f} %",  f" Sensor time: {toc - tic:0.4f} seconds", f"Data Wrangling time: {toc2 - tic2:0.4f} seconds",f"Inference time: {toc3 - tic3:0.4f} seconds"  )
     
     
     
