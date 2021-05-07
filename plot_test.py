@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use('Agg')
+matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import IMU
