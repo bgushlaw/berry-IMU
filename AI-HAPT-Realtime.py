@@ -10,8 +10,11 @@ import os
 import numpy as np
 import pandas as pd
 #import os.path
+
 from os import path
 import piDataWrangler
+import matplotlib
+import fastai
 from fastai.tabular.all import *
 
 
